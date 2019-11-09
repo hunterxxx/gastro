@@ -12,7 +12,8 @@ class HomePage extends React.Component {
     };
 
     informChef = () => {
-        axios.post('http://localhost:5000/start').then(data => {
+        axios.post('/start').then(data => {
+            console.log(data);
             this.setState({
                 chefInformed: true,
             });
@@ -23,7 +24,7 @@ class HomePage extends React.Component {
 
     render() {
         if (this.state.chefInformed) {
-            return <Redirect to='/dashboard' />
+            return <Redirect to='/map2' />
         }
         return (
             <button onClick={this.informChef}>Brauche Essen</button>
