@@ -3,9 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "google-map-react": "^1.1.5",
+    "nodemon": "^1.19.4",
     "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
+    "react-google-maps": "^9.4.5",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
+  },
+  "proxy": "http://localhost:5000/",
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   },
   "scripts": {
     "start": "react-scripts start",

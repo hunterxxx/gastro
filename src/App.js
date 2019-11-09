@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar } from 'react-bootstrap';
+import NavigationWrapper from './Components/NavigationWrapper'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="/">Essen Fertig</Navbar.Brand>
+      </Navbar>
+      <NavigationWrapper />
+      <nav className="navbar fixed-bottom navbar-light bg-light">
+        <p id="middle"> © EssenFertig 2019</p>
+      </nav>
+    </div >
   );
 }
 

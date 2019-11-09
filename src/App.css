@@ -6,8 +6,16 @@
   height: 40vmin;
 }
 
+#middle {
+  position:relative;
+  margin:0 auto;
+  clear:left;
+  height:auto;
+  z-index: 0;
+  text-align:center;/* Add This*/
+}
+
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
