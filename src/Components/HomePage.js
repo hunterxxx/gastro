@@ -12,13 +12,13 @@ class HomePage extends React.Component {
     };
 
     informChef = () => {
-        axios.post('https://localhost:5000/start').then(data => {
+        axios.post('http://localhost:5000/start').then(data => {
             this.setState({
                 chefInformed: true,
             });
         }).catch(err => {
             console.error(err);
-        };
+        });
     };
 
     render() {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import { Route, Switch } from "react-router-dom";
-import Map from "./Map";
+import HomePage from "./HomePage";
 import Map2 from "./Map2"
 
 class NavigationWrapper extends Component {
