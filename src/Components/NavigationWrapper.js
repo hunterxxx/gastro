@@ -8,7 +8,7 @@ class NavigationWrapper extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/map" component={Map} />
+                <Route exact path="/" component={HomePage} />
                 <Route exact path="/map2" component={Map2} />
             </Switch>
         );
