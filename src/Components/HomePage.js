@@ -33,7 +33,7 @@ class HomePage extends React.Component {
     renderForm = () => <Form style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', padding: 20,  top: '22%' }}>
         <Form.Field>
             <label>Restaurant's name</label>
-            <Input value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value })}}/>
+            <Input placeholder='Insert please the name of the restaurant' value={this.state.name} onChange={(e) => { this.setState({ name: e.target.value })}}/>
         </Form.Field>
         <Form.Field>
             <label>Nº persons</label>
@@ -56,7 +56,7 @@ class HomePage extends React.Component {
         if (this.state.chefInformed) {
             return <Redirect to='/map2' />
         }
-        return <div style={{ backgroundColor: '#2196F3', height: '100%'}}>
+        return <div style={{ backgroundColor: '#03A9F4', height: '100%'}}>
                 {this.renderForm()}
             </div>;
     }

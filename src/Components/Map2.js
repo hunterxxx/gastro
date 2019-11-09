@@ -57,7 +57,7 @@ class Map extends React.Component {
             nextLine.lng
         )
 
-        // distance of this line 
+        // distance of this line
         const totalDistance = nextLine.distance - lastLine.distance
         const percentage = (distance - lastLine.distance) / totalDistance
 
@@ -74,7 +74,7 @@ class Map extends React.Component {
     componentWillMount = () => {
         this.path = this.path.map((coordinates, i, array) => {
             if (i === 0) {
-                return { ...coordinates, distance: 0 } // it begins here! 
+                return { ...coordinates, distance: 0 } // it begins here!
             }
             const { lat: lat1, lng: lng1 } = coordinates
             const latLong1 = new window.google.maps.LatLng(lat1, lng1)
@@ -92,16 +92,16 @@ class Map extends React.Component {
         })
 
         console.log(this.path)
-    }
+    };
 
     alertChef = () => {
-        if (this.state.progress[2]) {
+        if (this.state.progress[2] && !this.state.found) {
             if (this.state.progress[2].lng === 13.046871) {
-                alert("success")
-                this.setState({ found: true })
+                alert("success");
+                this.setState({ found: true });
             }
         }
-    }
+    };
 
     render() {
         return (
