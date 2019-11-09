@@ -1,19 +1,33 @@
-/**
- * File created by Rudolf Cicko (@cicko)
- * Created on 09.11.19 - 15:58
- **/
 import React from 'react';
 import axios from 'axios';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { subscribeToTimer } from './api';
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:8000');
 
 class HomePage extends React.Component {
-    state = {
-        chefInformed: false,
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            chefInformed: false,
+            timestamp: ''
+        };
+    }
+
+    componentDidMount() {
+        socket.on('buttonUpdate', (data) => {
+            this.setState({
+                timestamp: data
+            })
+        });
+    }
+
+    handleSubmit = () => {
+        socket.emit('clicked');
+    }
 
     informChef = () => {
         axios.post('/start').then(data => {
-            console.log(data);
             this.setState({
                 chefInformed: true,
             });
@@ -27,7 +41,10 @@ class HomePage extends React.Component {
             return <Redirect to='/map2' />
         }
         return (
-            <button onClick={this.informChef}>Brauche Essen</button>
+            <>
+                <button onClick={this.handleSubmit}>Brauche Essen</button>
+                {this.state.timestamp}
+            </>
         );
     }
 }
