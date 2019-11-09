@@ -11,7 +11,11 @@ var clickCount = 0;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded());
+
 app.post('/start', (req, res) => {
+<<<<<<< HEAD
     res.send("hello")
 });
 
@@ -23,6 +27,12 @@ io.on('connection', (client) => {
         //send a message to ALL connected clients
         io.emit('buttonUpdate', clickCount);
     });
+=======
+    const { name, numClients } = req.body;
+    console.log('Name:', name);
+    console.log('Num clients:', numClients);
+    res.send('alter button title');
+>>>>>>> fff8726cc478219408c94922481ed3d6254944d3
 });
 
 
