@@ -11,7 +11,7 @@ class NavigationWrapper extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/" component={HomePage} />
+                <Route exact path="/" component={Photo} />
                 <Route exact path="/map" component={Map} />
                 <Route exact path="/admin" component={Admin} />
                 <Route exact path="/photo" component={Photo} />
