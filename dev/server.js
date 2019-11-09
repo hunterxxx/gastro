@@ -10,6 +10,14 @@ app.post('/start', (req, res) => {
     res.send("hello")
 });
 
+app.post('/decision', (req, res) => {
+    const persons = req.body.persons;
+    const restaurant = req.body.restaurant;
+
+    console.log(persons)
+    console.log(restaurant)
+});
+
 io.on('connection', (client) => {
     //when the server receives clicked message, do this
     client.on('clicked', function (data) {
