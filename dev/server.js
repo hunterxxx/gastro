@@ -1,15 +1,22 @@
 const express = require('express');
 const app = express();
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 const port = 5000;
-
-app.use(express.json());       // to support JSON-encoded bodies
-app.use(express.urlencoded());
+const port2 = 8000;
+var clickCount = 0;
 
 app.post('/start', (req, res) => {
-    const { name, numClients } = req.body;
-    console.log('Name:', name);
-    console.log('Num clients:', numClients);
-    res.send('alter button title');
+    res.send("hello")
 });
 
+io.on('connection', (client) => {
+    //when the server receives clicked message, do this
+    client.on('clicked', function (data) {
+        clickCount++;
+        io.emit('buttonUpdate', clickCount); //send a message to ALL connected clients
+    });
+});
+
+io.listen(port2);
 app.listen(port, () => console.log(`Listening on port ${port}`));
