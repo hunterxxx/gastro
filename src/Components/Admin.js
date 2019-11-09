@@ -11,17 +11,8 @@ class Admin extends React.Component {
     }
 
     componentDidMount() {
-        //listen for new events
-        // socket.on('timer', (event) => {
-        //     console.log('hello,', event);
-        // });
-        // subscribeToTimer((err, timestamp) => this.setState({
-        //     timestamp
-        // }));
         socket.on('buttonUpdate', (data) => {
-            this.setState({
-                timestamp: data
-            })
+            alert("New customer order!")
         });
     };
 

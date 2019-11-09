@@ -23,9 +23,6 @@ class HomePage extends React.Component {
 
     handleSubmit = () => {
         socket.emit('clicked');
-    }
-
-    informChef = () => {
         axios.post('/start').then(data => {
             this.setState({
                 chefInformed: true,
@@ -33,16 +30,15 @@ class HomePage extends React.Component {
         }).catch(err => {
             console.error(err);
         });
-    };
+    }
 
     render() {
         if (this.state.chefInformed) {
-            return <Redirect to='/map2' />
+            return <Redirect to='/map' />
         }
         return (
             <>
                 <button onClick={this.handleSubmit}>Brauche Essen</button>
-                {this.state.timestamp}
             </>
         );
     }
