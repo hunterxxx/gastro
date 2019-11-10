@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
 import { Route, Switch } from "react-router-dom";
-import HomePage from "./HomePage";
 import Admin from "./Admin";
 import Map from "./Map";
 import Photo from "./Photo";

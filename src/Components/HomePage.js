@@ -40,15 +40,15 @@ class HomePage extends React.Component {
         });
     };
 
-    renderForm = () => <button onClick={this.handleSubmit}/>;
+    renderForm = () => <button onClick={this.handleSubmit} />;
 
     render() {
         if (this.state.chefInformed) {
             return <Redirect to='/map' />
         }
-        return <div style={{ backgroundColor: '#03A9F4', height: '100%'}}>
-                {this.renderForm()}
-            </div>;
+        return <div style={{ backgroundColor: '#03A9F4', height: '100%' }}>
+            {this.renderForm()}
+        </div>;
     }
 }
 

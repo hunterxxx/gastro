@@ -12,7 +12,6 @@ faceapi.env.monkeyPatch({
 });
 
 class Photo extends Component {
-
     constructor(props) {
         super(props);
 
@@ -24,15 +23,21 @@ class Photo extends Component {
     };
 
     async onTakePhoto(dataUri) {
-
-        const img = document.createElement  ('img');
+        const img = document.createElement('img');
         img.src = dataUri;
-        console.log('Photo taken');
+        alert('Photo taken');
         const detections = await faceapi.detectAllFaces(img);
-        console.log(detections);
+        console.log(detections.length);
         // Do stuff with the dataUri photo...
         console.log('hola');
         console.log(dataUri);
+        this.props.history.push({
+            pathname: '/decision',
+            state: {
+                length: detections.length,
+                restaurant: "Panoramarestaurant zur Festung Hohensalzburg"
+            }
+        });
     }
 
     render() {

@@ -1,30 +1,25 @@
 const express = require('express');
 const app = express();
-var http = require('http').createServer(app);
-var io = require('socket.io')(http);
+var io1 = require('socket.io').listen(8000);
+var io2 = require('socket.io').listen(8001);
 const port = 5000;
-const port2 = 8000;
 var clickCount = 0;
 
 app.post('/start', (req, res) => {
     res.send("hello")
 });
 
-app.post('/decision', (req, res) => {
-    const persons = req.body.persons;
-    const restaurant = req.body.restaurant;
-
-    console.log(persons)
-    console.log(restaurant)
-});
-
-io.on('connection', (client) => {
+io1.on('connection', (client) => {
     //when the server receives clicked message, do this
-    client.on('clicked', function (data) {
-        clickCount++;
-        io.emit('buttonUpdate', clickCount); //send a message to ALL connected clients
+    client.on('clicked', (data) => {
+        io1.emit('receivedOrder', clickCount); //send a message to ALL connected clients
     });
 });
 
-io.listen(port2);
+io2.on('connection', function (client) {
+    client.on('clicked2', (data) => {
+        io2.emit('startCooking', clickCount); //send a message to ALL connected clients
+    });
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));

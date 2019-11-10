@@ -1,10 +1,13 @@
 import React from 'react';
+import openSocket from 'socket.io-client';
 import { withGoogleMap, withScriptjs, GoogleMap, Polyline, Marker } from 'react-google-maps'
+const socket = openSocket('http://localhost:8001');
 
 class Map extends React.Component {
     state = {
         progress: [],
-        found: false
+        found: false,
+        timestamp: ''
     }
 
     path = [
@@ -15,13 +18,13 @@ class Map extends React.Component {
         { lat: 47.794995, lng: 13.047655 },
     ]
 
-    velocity = 80
+    velocity = 40
     initialDate = new Date()
 
     getDistance = () => {
         // seconds between when the component loaded and now
         const differentInTime = (new Date() - this.initialDate) / 1000 // pass to seconds
-        return differentInTime * this.velocity // d = v*t -- thanks Newton!
+        return differentInTime * this.velocity // d = v*t
     }
 
     componentDidMount = () => {
@@ -95,9 +98,9 @@ class Map extends React.Component {
     }
 
     alertChef = () => {
-        if (this.state.progress[2]) {
-            if (this.state.progress[2].lng === 13.046871) {
-                alert("success")
+        if (this.state.progress[3]) {
+            if (this.state.progress[3].lng === 13.045356) {
+                socket.emit('clicked2');
                 this.setState({ found: true })
             }
         }
@@ -112,9 +115,12 @@ class Map extends React.Component {
                 {!this.state.found && this.alertChef()}
                 {this.state.progress && (
                     <>
-                        <Polyline path={this.state.progress} options={{ strokeColor: "#FF0000 " }} />
-                        <Marker position={this.state.progress[this.state.progress.length - 1]} />
-                        <Marker position={{ lat: 47.794995, lng: 13.047655 }} />
+                        <Polyline path={this.state.progress} options={{ strokeColor: "#FFFFFF" }} />
+                        <Polyline path={this.path} options={{ strokeColor: "#000000" }} />
+                        <Marker label="Begin" position={this.state.progress[this.state.progress.length - 1]} />
+                        <Marker label="End" position={{ lat: 47.794995, lng: 13.047655 }} />
+                        <Marker label="A" position={{ lat: 47.797907, lng: 13.046871 }} />
+                        <Marker label="B" position={{ lat: 47.796771, lng: 13.045356 }} />
                     </>
                 )}
             </GoogleMap>
