@@ -14,23 +14,19 @@ faceapi.env.monkeyPatch({
 class Photo extends Component {
     constructor(props) {
         super(props);
-
         this.configureModels();
     }
 
     configureModels = async () => {
-        await faceapi.nets.ssdMobilenetv1.loadFromUri('/models');
+        await faceapi.nets.tinyFaceDetector.loadFromUri('./models_tiny');
     };
 
     async onTakePhoto(dataUri) {
         const img = document.createElement('img');
         img.src = dataUri;
         alert('Photo taken');
-        const detections = await faceapi.detectAllFaces(img);
-        console.log(detections.length);
+        const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions());
         // Do stuff with the dataUri photo...
-        console.log('hola');
-        console.log(dataUri);
         this.props.history.push({
             pathname: '/decision',
             state: {

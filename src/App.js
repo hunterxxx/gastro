@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/">EssenFertig</Navbar.Brand>
+        <Navbar.Brand href="/"><h3>EssenFertig</h3></Navbar.Brand>
       </Navbar>
       <NavigationWrapper />
       <nav className="navbar fixed-bottom navbar-light bg-light">

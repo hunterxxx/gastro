@@ -28,7 +28,7 @@ class Decision extends Component {
                     <Input placeholder='Insert please the name of the restaurant' value={this.props.location.state.length} onChange={(e) => { this.setState({ name: e.target.value }) }} />
                 </Form.Field>
                 <Link to="/map">
-                    <Button onClick={this.handleSubmit} type="submit" style={{ width: "100%" }}>Submit</Button>
+                    <Button onClick={this.handleSubmit} type="submit" style={{ width: "100%", backgroundColor: "#B3E5FC" }}>Submit and Pay Now</Button>
                 </Link>
             </Form>
         )

@@ -18,7 +18,7 @@ class Map extends React.Component {
         { lat: 47.794995, lng: 13.047655 },
     ]
 
-    velocity = 40
+    velocity = 25
     initialDate = new Date()
 
     getDistance = () => {
